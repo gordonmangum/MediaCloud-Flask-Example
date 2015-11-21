@@ -11,14 +11,18 @@
     <h3>Try a Search!</h3>
     <form action="search" method="POST">
       <div class="form-group">
+        <label for="keywords">Pick a start year</label>
+        <input type="number" class="form-control" id="startYear" name="startYear" placeholder="2014" min="2009" max="2015">
+        <label for="keywords">Pick an end year</label>
+        <input type="number" class="form-control" id="endYear" name="endYear" placeholder="2015" min="2009" max="2015">
         <label for="keywords">Enter some keywords</label>
         <input type="text" class="form-control" id="keywords" name="keywords" placeholder="puppy">
       </div>
       <button type="submit" class="btn btn-default">Search</button>
     </form>
-  
+
   </div>
 
-</div>    
+</div>
 
 {% endblock %}

@@ -28,14 +28,22 @@ def home():
 @app.route("/search",methods=['POST'])
 def search_results():
     keywords = request.form['keywords']
+    startYear = request.form['startYear']
+    intStartYear = int(startYear)
+    endYear = request.form['endYear']
+    intEndYear = int(endYear)
+    endYear = request.form['endYear']
     now = datetime.datetime.now()
     results = mc.sentenceCount(keywords,
-        solr_filter=[mc.publish_date_query( datetime.date( 2015, 1, 1), 
-                                            datetime.date( now.year, now.month, now.day) ),
+        solr_filter=[mc.publish_date_query( datetime.date( intStartYear, 1, 1),
+                                            datetime.date( intEndYear, now.month, now.day) ),
                      'media_sets_id:1' ])
-    return render_template("search-results.html", 
+    return render_template("search-results.html",
         keywords=keywords, sentenceCount=results['count'] )
 
 if __name__ == "__main__":
     app.debug = True
     app.run()
+
+
+#'%d' % (startYear)
