@@ -30,16 +30,26 @@ def search_results():
     keywords = request.form['keywords']
     startYear = request.form['startYear']
     intStartYear = int(startYear)
+    startMonth = request.form["startMonth"]
+    intStartMonth = int(startMonth)
+    startDay = request.form["startDay"]
+    intStartDay = int(startDay)
     endYear = request.form['endYear']
     intEndYear = int(endYear)
     endYear = request.form['endYear']
+    endMonth = request.form["endMonth"]
+    intEndMonth = int(endMonth)
+    endDay = request.form["endDay"]
+    intEndDay = int(endDay)
+    strStartDate = str(startYear+'-'+startMonth+'-'+startDay)
+    strEndDate = str(endYear+'-'+endMonth+'-'+endDay)
     now = datetime.datetime.now()
     results = mc.sentenceCount(keywords,
-        solr_filter=[mc.publish_date_query( datetime.date( intStartYear, 1, 1),
-                                            datetime.date( intEndYear, now.month, now.day) ),
-                     'media_sets_id:1' ])
+        solr_filter=[mc.publish_date_query( datetime.date( intStartYear, intStartMonth, intStartDay),
+                                            datetime.date( intEndYear, intEndMonth, intEndDay) ),
+                     'media_sets_id:1' ],split=True,split_start_date=strStartDate,split_end_date=strEndDate)
     return render_template("search-results.html",
-        keywords=keywords, sentenceCount=results['count'] )
+        keywords=keywords, sentenceCount=results['count'], sentenceSplit=results['split'] )
 
 if __name__ == "__main__":
     app.debug = True

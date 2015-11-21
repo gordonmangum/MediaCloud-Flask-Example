@@ -12,9 +12,19 @@
     <form action="search" method="POST">
       <div class="form-group">
         <label for="keywords">Pick a start year</label>
-        <input type="number" class="form-control" id="startYear" name="startYear" placeholder="2014" min="2009" max="2015">
+        <input type="number" class="form-group" id="startYear" name="startYear" maxlength="4" placeholder="2014" min="2009" max="2015">
+        <label for="keywords">month</label>
+        <input type="number" class="form-group" id="startMonth" name="startMonth" placeholder="01" min="01" max="12">
+        <label for="keywords">day</label>
+        <input type="number" class="form-group" id="startDay" name="startDay" placeholder="01" min="01" max="30">
+        <br>
         <label for="keywords">Pick an end year</label>
-        <input type="number" class="form-control" id="endYear" name="endYear" placeholder="2015" min="2009" max="2015">
+        <input type="number" class="form-group" id="endYear" name="endYear" placeholder="2015" min="2009" max="2015">
+        <label for="keywords">month</label>
+        <input type="number" class="form-group" id="endMonth" name="endMonth" placeholder="01" min="01" max="12">
+        <label for="keywords">day</label>
+        <input type="number" class="form-group" id="endDay" name="endDay" placeholder="01" min="01" max="30">
+        <br>
         <label for="keywords">Enter some keywords</label>
         <input type="text" class="form-control" id="keywords" name="keywords" placeholder="puppy">
       </div>
