@@ -32,6 +32,8 @@ def search_results():
     intStartYear = int(startYear)
     startMonth = request.form["startMonth"]
     intStartMonth = int(startMonth)
+    # attempt at input validation to add leading zero
+    #intStartMonth = "%02d" % intStartMonth
     startDay = request.form["startDay"]
     intStartDay = int(startDay)
     endYear = request.form['endYear']

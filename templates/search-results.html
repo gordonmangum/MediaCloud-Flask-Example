@@ -12,11 +12,7 @@
 
     <p>You searched for "{{keywords}}"</p>
 
-    <p>In the US Mainstream Media online there have {{ sentenceCount }} sentences matching your search so far this year.</p>
-
-    <p>The sentence split dates are {{ splitDate }} </p>
-
-    <p>The counts are {{ values }} </p>
+    <p>In the US Mainstream Media online there have {{ sentenceCount }} sentences matching your search for the dates provided.</p>
 
     <div id="container" style="width:100%; height:400px;">
     	<script type="text/javascript">
@@ -27,11 +23,10 @@
 			            type: 'line'
 			        },
 			        title: {
-			            text: 'Sentences Per week'
+			            text: 'Sentences Per Week'
 			        },
 			        xAxis: {
 			            categories: {{ splitDate|safe }}
-			            //categories: ['1', '2', '3']
 			        },
 			        yAxis: {
 			            title: {
@@ -41,7 +36,6 @@
 			        series: [{
 			            name: 'Per Week',
 			            data: {{ values|safe }}
-			            //data: [1, 0, 4]
 			        }]
 			    });
 			});
